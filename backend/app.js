@@ -1,12 +1,16 @@
 const express=require("express");
 const app=express();
 const dotenv=require("dotenv");
-dotenv.config();
-const {chats}=require("./data");
+const cors=require('cors');
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+const {chats}=require("./data.js");
+app.use(cors({origin:['http://localhost:5173']}));
 app.get('/',(req,res)=>{
     res.send("bhej di");
 })
 app.get('/api/chat',(req,res)=>{
+    console.log("a gya");
     res.send(chats);
 })
 
@@ -15,7 +19,7 @@ app.get('/api/chat/:id',(req,res)=>{
     const singlechat=chats.find((c)=> c._id==req.params.id);
     res.send(singlechat);
 })
-const Port=process.env.Port||8080;
-app.listen(Port,()=>{
+
+app.listen('8081',()=>{
     console.log("server connected");
 })
