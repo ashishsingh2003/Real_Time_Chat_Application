@@ -1,10 +1,14 @@
 const express=require("express");
 const app=express();
 const dotenv=require("dotenv");
+dotenv.config();
 const cors=require('cors');
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+
 const {chats}=require("./data.js");
+const connectDB = require("./config/db.js");
+connectDB();
 app.use(cors({origin:['http://localhost:5173']}));
 app.get('/',(req,res)=>{
     res.send("bhej di");
