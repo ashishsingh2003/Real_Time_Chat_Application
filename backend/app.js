@@ -3,6 +3,7 @@ const app=express();
 const dotenv=require("dotenv");
 dotenv.config();
 const cors=require('cors');
+const userroutes=require('./Routes/userroutes.js')
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
@@ -23,7 +24,7 @@ app.get('/api/chat/:id',(req,res)=>{
     const singlechat=chats.find((c)=> c._id==req.params.id);
     res.send(singlechat);
 })
-
+app.use('/api/user',userroutes);
 app.listen('8081',()=>{
     console.log("server connected");
 })

@@ -8,12 +8,12 @@ import SignUp from '../Components/SignUp';
 function Home() {
   
   return (
-    <Container maxW='xl' centerContent marginBottom="">
+    <Container maxW='xl'centerContent>
       <Box d='flex'
        justifyContent="center"
        p={3}
        bg={'white'}
-       m="15 px 0px 15px 0px"
+       m="15px 0px 15px 0px"
        w="100%"
        borderRadius="1g"
        borderWidth="1px"
@@ -21,7 +21,7 @@ function Home() {
        >
         <Text fontSize="4xl"textAlign="center"fontFamily="cursive">Talk-A-Tive</Text>
       </Box>
-    <Box bg="white"p={4} borderRadius="lg" borderWidth="1px" w="100%" marginBottom="15">
+    <Box bg="white"p={4} borderRadius="lg" borderWidth="1px" w="100%" margin="15">
     <Tabs variant='soft-rounded' >
   <TabList mb="1em">
     <Tab width="50%">Login</Tab>

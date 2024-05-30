@@ -1,14 +1,20 @@
 import { FormControl, FormLabel, Input, VStack,InputGroup,InputRightElement ,Button} from '@chakra-ui/react'
 import React, { useState } from 'react'
-
+import axios from 'axios';
 function SignUp() {
     const [show,setshow]=useState(false);
     const [name,setname]=useState();
     const [email,setemail]=useState();
-    const [pic,setpic]=useState();
+    const [pic,setpic]=useState("kuch bhi");
     const [password,setpassword]=useState();
     const handleClick=()=> setshow(!show);
-    const submitHandler=()=>{}
+    console.log(pic);
+    const submitHandler=async (e)=>{
+         e.preventDefault();
+         
+         const res=await axios.post('http://localhost:8081/api/user/',{name,email,password,pic});
+         console.log(res);
+    }
   return (
     <VStack spacing='5px'>
       <FormControl >
@@ -29,7 +35,7 @@ function SignUp() {
         <FormLabel>Pic</FormLabel>
            <Input 
              placeholder='image'
-             onChange={(e)=>setimage(e.target.value)}
+             onChange={(e)=>setpic(e.target.value)}
            />
        </FormControl>
        <FormControl >

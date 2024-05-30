@@ -1,6 +1,6 @@
 import { FormControl, FormLabel, Input, VStack,InputGroup,InputRightElement ,Button} from '@chakra-ui/react'
 import React, { useState } from 'react'
-
+import axios from 'axios';
 function Login() {
   const [show,setshow]=useState(false);
   
@@ -8,7 +8,12 @@ function Login() {
  
   const [password,setpassword]=useState();
   const handleClick=()=> setshow(!show);
-  const submitHandler=()=>{}
+  const submitHandler=async (e)=>{
+      e.preventDefault();
+      const res=await axios.post('http://localhost:8081/api/user/login',{email,password});
+      console.log(res);
+
+  }
   return (
     <VStack spacing='5px'
   
